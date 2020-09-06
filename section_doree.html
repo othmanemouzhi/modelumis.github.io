@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Section doree</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Logo -->
+			<h1><a href="index.html" id="logo">Modelumis <em>by Mouzhi Othmane</em></a></h1>
+
+			<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current"><a href="index.html">Home</a></li>
+						<li>
+							<a href="#">Models</a>
+							<ul>
+								<li><a href="Mathematic.html">Mathematic</a></li>
+								<li><a href="Sciences_and_engineering.html">Sciences and engineering</a></li>
+					
+								<li>
+									<a href="Physics.html">Physics</a>
+									<ul>
+										<li><a href="Solid_mechanics.html">Solid Mechanic</a></li>
+										<li><a href="Fluid_mechanics.html">Fluid Mechanic</a></li>
+										<li><a href="MHD.html">MHD-Magnetohydrodynamic</a></li>
+										<li><a href="Electrostatic.html">Electrostatic</a></li>
+										<li><a href="Signal_and_filter.html">Signal and filter</a></li>
+									</ul>
+								</li>
+								<li><a href="index.html">Other</a></li>
+							</ul>
+						</li>
+						<li><a href="methods.html">Methods</a></li>
+						<!--
+						<li><a href="right-sidebar.html">Right Sidebar</a></li>
+						<li><a href="two-sidebar.html">Two Sidebar</a></li>
+						<li><a href="no-sidebar.html">No Sidebar</a></li>
+					-->
+					</ul>
+				</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-4 col-12-narrower">
+								<div id="sidebar">
+
+									
+							<div class="col-8  col-12-narrower imp-narrower">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Section doree</h2>
+												</header>
+
+											<span class="image featured"><img src="images/section_doree.jpg" alt="" /></span>
+
+												<p align="justify">
+                                                <h5> You have a function f with his expression. You want to find a maximum or a minimum of the function. We will focus on the maximum.
+                                                    Considering the fact that you know briefly where a maximum of f is localised and the characteristics of f verifies : f increase and then decrease , in order that the maximum exist   
+                                                    You take two real a and b as f(a) is not to far from f(b). 
+                                                    This method use the golden number, alpha = ((sqrt(5)-1)/2.
+                                                    We define c=alpha*a+(1-alpha)*b and d=(1-alpha)*a+alpha*b .   
+                                                    To approach the maximum of f between a and b, we will iterate number_of_iteration times this procedure:<br>
+                                                    -If f(a)&lt;f(c) and f(c)&gt;f(d) then b=d,c=alpha*a + (1-alpha)*d and d=c<br>
+                                                    -Else a=c , c=d and d=(1-alpha)*c + alpha*b <br><br>
+                                                    When the absolute value of a-b is less than our accuracy epsilon, we stop the loop. <br>
+                                                    
+                                                    Besides, we return the value of f((a+b)/2) and (a+b)/2. Finally, we can check if the algorithm returns a suitable value of the maximum of f between a and b. 
+                                                    </h5>
+                                                </p>
+												<p align="justify">
+                                                    
+                                                    <h5>
+
+                                                        Considering the function f:x->-x*x+4*x+19, we want to calcul the maximum of it. 
+                                                        Let's say we calcul the zeros between a = -5 and b = 3, after 32 iterations of the procedure explained above, 
+                                                        we obtain the maxmium value 2.09443. Moreover, the value of f(2.09443) = 22.9911. 
+                                                        So, the result of the algorithm is quite satisfying.
+                                                        
+
+													</h5>
+													<a href="https://github.com/othmanemouzhi/Sciences_Python_C-/blob/master/Mathematic/Optimisation/C%2B%2B/Section_doree.cpp"><h5>See my GitHub to see the code</h5></a>
+                                                   
+                                                    <h2>Look at the code with the minimum function</h2>
+                                                    
+                                                    <xmp>
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// condition to respect to have convergence
+// f(a) and f(b) have to be close and the function f has to satisfy the condition of increasing and then decreasing or contrary !
+
+auto f = [](long double x) { return -x*x+4*x+19; };
+float alpha((sqrt(5)-1)/2);
+
+// The minimum version of the optimisation algorithm 
+void section_doree_min(long double a, long double b, double epsilon, int Niter){
+
+    float an=a,bn=b,cn=a*alpha+(1-alpha)*b,dn= b*alpha+(1-alpha)*a;
+    float Fan=f(an),Fbn=f(bn),Fcn=f(cn),Fdn=f(dn);
+    int i=0;
+    while(i<Niter){
+        if((bn-an)<epsilon){
+            cout << "L'alogrithme donne " << (bn+an)/2 <<" et ça donne " << f((bn+an)/2)<<" après "<<i<<" itérations"<<endl;
+            break;
+        }
+        if(Fcn<Fan and Fcn<Fdn){
+            bn=dn,cn=alpha*an + (1-alpha)*dn , dn=cn;
+            Fbn=Fdn,Fcn=f(cn),Fdn=Fcn;
+        }
+        else{
+            an=cn , cn=dn,dn=(1-alpha)*cn + alpha*bn;
+            Fan=Fcn,Fcn=Fdn,Fdn=f(dn);
+        }
+        i=i+1;
+        if(i==Niter){
+            cout << "l’algorithme n’a pas convergé après"<< Niter <<"itérations"<<endl;
+        }
+    }
+}
+
+// The maximum version of the optimisation algorithm 
+void section_doree_max(long double a, long double b, double epsilon, int Niter){
+
+    float an=a,bn=b,cn=a*alpha+(1-alpha)*b,dn= b*alpha+(1-alpha)*a;
+    float Fan=f(an),Fbn=f(bn),Fcn=f(cn),Fdn=f(dn);
+    int i=0;
+    while(i<Niter){
+        if((bn-an)<epsilon){
+            cout << "L'alogrithme donne " << (bn+an)/2 <<" et ça donne " << f((bn+an)/2)<<" après "<<i<<" itérations"<<endl;
+            break;
+        }
+        if(Fcn>Fan and Fcn>Fdn){
+            bn=dn,cn=alpha*an + (1-alpha)*dn , dn=cn;
+            Fbn=Fdn,Fcn=f(cn),Fdn=Fcn;
+        }
+        else{
+            an=cn , cn=dn,dn=(1-alpha)*cn + alpha*bn;
+            Fan=Fcn,Fcn=Fdn,Fdn=f(dn);
+        }
+        i=i+1;
+        //cout << " an  =  "<< an <<" cn =  "<<cn<<" dn = "<<dn <<" bn = "<<bn << endl;
+        //cout << " f(an)  =  "<< f(an) <<" f(cn) =  "<<f(cn)<<" f(dn) = "<<f(dn) <<" f(bn) = "<<f(bn) << endl;
+        if(i==Niter){
+            cout << "l’algorithme n’a pas convergé après "<< Niter <<" itérations"<<endl;
+        }
+    }
+}
+
+int main(){
+
+    float temps;
+    clock_t t1, t2;
+    
+    t1 = clock();
+
+    section_doree_max(-5,3,1e-15,1000);
+    //section_doree_min(-10,10,1e-8,100);
+
+    t2 = clock();
+    temps = (float)(t2-t1)/CLOCKS_PER_SEC;
+    printf("temps = %f\n", temps);
+
+    return 0;
+
+}
+
+                                                    </xmp>
+												</p>
+
+												  <!-- <h2>See other mathematical simulation</h2> -->
+												  <center><h2>Probabilities and statistics algorithm</h2></center>
+												<a href="markov_text.html"><h3>Markov Chains learning, creating a succesion of words commonly and writing it </h3></a>
+												<a href="approximation_pi.html"><h3>Approximation of PI </h3></a>
+												<center><h2>Optimisation algorithm</h2></center>
+												<a href="dichotomie.html"><h3>Dichotomy method</h3></a>
+												<a href="section_doree.html"><h3>Section doree method</h3></a>
+												<!--<a href="#"><h3>Secante method</h3></a>
+												<a href="#"><h3>Newton method</h3></a>
+												<a href="#"><h3>Dichotomie with n cut of the interval method</h3></a>
+												<a href="#"><h3>Gradient Descent method</h3></a>-->
+													
+											</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="col-3 col-6-narrower col-12-mobilep">
+							<h3>Links to Stuff</h3>
+							<ul class="links">
+								<li><a href="https://www.f-legrand.fr/scidoc/">Applied Informatic in Physics</a></li>
+								<li><a href="http://www.tangentex.com/">Initiation to numerical physic</a></li>
+								<li><a href="https://www.physique.usherbrooke.ca/pages/sites/default/files/PHQ404_0.pdf">Thesis introducing to numerical methods</a></li>
+								<!-- Commentaires
+
+								<li><a href="#">Rutrum accumsan dolor</a></li>
+								<li><a href="#">Mattis rutrum accumsan</a></li>
+								<li><a href="#">Suspendisse varius nibh</a></li>
+								<li><a href="#">Sed et dapibus mattis</a></li>
+								-->
+							</ul>
+						</section>
+						<section class="col-3 col-6-narrower col-12-mobilep">
+							<h3>More Links to Stuff</h3>
+							<ul class="links">
+								<li><a href="https://openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c">Learn C++ with Openclassroom</a></li>
+								<li><a href="https://cel.archives-ouvertes.fr/cel-00573975/document">Thesis Scientific calculus with C++</a></li>
+								<li><a href="https://moodle.umontpellier.fr/pluginfile.php/378656/mod_resource/content/42/Modelisation_Simulation_Notes-19.pdf">Methods and limits of numerical methods with examples</a></li>
+								<!--
+								<li><a href="#">Sed et dapibus quis</a></li>
+								<li><a href="#">Rutrum amet varius</a></li>
+								-->
+							</ul>
+						</section>
+						<!--
+						<section class="col-6 col-12-narrower">
+							<h3>Get In Touch</h3>
+							<form>
+								<div class="row gtr-50">
+									<div class="col-6 col-12-mobilep">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="col-6 col-12-mobilep">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="col-12">
+										<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" class="button alt" value="Send Message" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+						</section>
+					-->
+					</div>
+				</div>
+
+				<!-- Icons -->
+					<ul class="icons">
+						<!--Attention à changer-->
+						<!--<li><a href="https://twitter.com/Othmanedu77" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>-->
+						<li><a href="https://github.com/othmanemouzhi/Sciences_Python_C-" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/othmane-mouzhi-906634135?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bxx3YZEi4TYSm2eFNrHMHdw%3D%3D" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<!--
+						<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+					-->
+					</ul>
+
+			</div>
+
+	</div>
+
+					
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Approximation of PI</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html" id="logo">Modelumis <em>by Mouzhi Othmane</em></a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current"><a href="index.html">Home</a></li>
+								<li>
+									<a href="#">Models</a>
+									<ul>
+										<li><a href="Mathematic.html">Mathematic</a></li>
+										<li><a href="Sciences_and_engineering.html">Sciences and engineering</a></li>
+							
+										<li>
+											<a href="Physics.html">Physics</a>
+											<ul>
+												<li><a href="Solid_mechanics.html">Solid Mechanic</a></li>
+												<li><a href="Fluid_mechanics.html">Fluid Mechanic</a></li>
+												<li><a href="MHD.html">MHD-Magnetohydrodynamic</a></li>
+												<li><a href="Electrostatic.html">Electrostatic</a></li>
+												<li><a href="Signal_and_filter.html">Signal and filter</a></li>
+											</ul>
+										</li>
+										<li><a href="index.html">Other</a></li>
+									</ul>
+								</li>
+								<li><a href="methods.html">Methods</a></li>
+								<!--
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="two-sidebar.html">Two Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+							-->
+							</ul>
+						</nav>
+
+				</div>
+
+			<!-- Main -->
+				<section class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-4 col-12-narrower">
+								<div id="sidebar">
+
+									
+							<div class="col-8  col-12-narrower imp-narrower">
+								<div id="content">
+
+									<!-- Content -->
+
+										<article>
+											<header>
+												<h2>Approximation of PI </h2>
+												</header>
+
+											<span class="image featured"><img src="images/monte_carlo.jpg" alt="" /></span>
+
+												<p align="justify">
+												<h4>According to Newsweek, <i>pi is useful for describing everything from the way light and sound waves ripple to the 'bendiness' of rivers, and it even crops up in calculations where circles are nowhere to be seen, such as Euler's Identity—a probability formula that has been described as the "most beautiful" in mathematics.</h4></i>
+												</p>
+												<p align="justify">
+												<h4>As pi is an irrational number, which means that it is a rela number that cannot expressed by a simple fraction. That's because pi is what mathematicians call an "infinite decimal" — after the decimal point, the digits go on forever and ever. 
+                                                    Consequently, we have to calcul every number decimal after another until our precision satisfy us. 
+                                                    Numerically, we tend to approximate the number pi by using different methods. The numerical methods which is famous is the Monte Carlo method. 
+                                                </h4>
+                                                    <h2>Monte Carlo</h2>
+                                                    <h4>
+                                                    The method is simple. 
+                                                    Randomnly, we choose two real between -1 and 1. Let's called them x and y. 
+                                                    Then, we check if the point of coordinate(x,y) is inside the circle of radius 1 and center 0.
+                                                    If the point of coordinate verifies the condition, therefore we add 1 to a variable called number_inside( which has been initialized at the beginning of the program). 
+                                                    Then, we add 1 to a variable called number_of_iteration. 
+                                                    We repeat exactly the procedure until of number_of_iteration reachs a integer maximum defined at the beginning of the program.
+                                                    And then we can calcul pi using number_of_iteration and number_inside
+                                                </h4>
+												<h3>How do we calcul pi with number_of_iteration and number_inside ? </h3>
+												
+												<h5>The answer use the figure above. The area of the green square is A_square = 2*2=4. The area of the circle inside the square is A_circle = pi*radius*radius=pi*1*1=pi.  
+                                                    Now, let's understand what can we have done before. The quotient between number_inside and number_of_iteration should approach the quotient between A_circle and A_square.
+                                                    Consequently, pi=number_inside / number_of_iteration * 4 .
+
+                                                    As you may think, the precision of pi will be high when our number_of_iteration is a large integer.
+                                                    <br>
+                                                    With number_of_iteration = 100, we approximate pi = 3  <br>
+                                                    With number_of_iteration = 1000, we approximate pi = 3.088 <br>
+                                                    With number_of_iteration = 10000, we approximate pi = 3.1364 <br>
+                                                    With number_of_iteration = 100000, we approximate pi = 3.1452 <br>
+                                                    With number_of_iteration = 1000000, we approximate pi = 3.1404 <br>
+                                                    With number_of_iteration = 10000000, we approximate pi = 3.14056 <br>
+                                                    With number_of_iteration = 100000000, we approximate pi = 3.14177  <br>
+												  </h5> 
+                                                <a href=""><h5>See my GitHub to see the Monte Carlo code</h5></a>
+                                                  <h5>Let's see another method to approximate pi.</h5>
+                                                <h2>Bailey–Borwein–Plouffe formula</h2>
+                                                  <h5>
+                                                    The Bailey–Borwein–Plouffe formula (BBP formula) is a formula for π. It was discovered in 1995 by Simon Plouffe and is named after the authors of the article in which it was published, David H. Bailey, Peter Borwein, and Plouffe.
+                                                     Before that, it had been published by Plouffe on his own site.
+                                                    The formula is  <br>
+                                                        <center><img src="images/bbp.png"></center>
+
+                                                        Consequently, as we cannot go to oo, we fix a huge integer called number_of_iteration as before.
+                                                        Then, we iterate in our program in order to approximate rightfully pi. 
+
+                                                        <br>
+                                                        With number_of_iteration = 100, we approximate pi = 3.14159265358979115. <br>
+                                                    With number_of_iteration = 100, we approximate pi = 3.14159265358979324  <br>
+                                                    With number_of_iteration = 1000, we approximate pi = 3.14159265358979324. <br>
+
+                                                    In conclusion, this methods seems to more accurate than Monte Carlo methods but effectively, the formula isn't simple to demonstrate. 
+                                                  </h5>
+                                                  <a href="https://github.com/othmanemouzhi/Sciences_Python_C-/blob/master/Mathematic/Optimisation/C%2B%2B/dichotomie.cpp"><h5>See my GitHub to see the Monte Carlo</h5></a>
+                                                
+                                                <h2>There is a lot of methods to approximate methods(Ramanujan series, Chudnovsky, Double factorial, ect ...)</h2>
+                                                  
+                                            </p>
+
+												   <!-- <h2>See other mathematical simulation</h2> -->
+												   <center><h2>Probabilities and statistics algorithm</h2></center>
+												   <a href="markov_text.html"><h3>Markov Chains learning, creating a succesion of words commonly and writing it </h3></a>
+												   <a href="approximation_pi.html"><h3>Approximation of PI </h3></a>
+												   <center><h2>Optimisation algorithm</h2></center>
+												   <a href="dichotomie.html"><h3>Dichotomy method</h3></a>
+												   <a href="section_doree.html"><h3>Section doree method</h3></a>
+												   <!--<a href="#"><h3>Secante method</h3></a>
+												   <a href="#"><h3>Newton method</h3></a>
+												   <a href="#"><h3>Dichotomie with n cut of the interval method</h3></a>
+												   <a href="#"><h3>Gradient Descent method</h3></a>-->
+													   
+											</article>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<section class="col-3 col-6-narrower col-12-mobilep">
+							<h3>Links to Stuff</h3>
+							<ul class="links">
+								<li><a href="https://www.f-legrand.fr/scidoc/">Applied Informatic in Physics</a></li>
+								<li><a href="http://www.tangentex.com/">Initiation to numerical physic</a></li>
+								<li><a href="https://www.physique.usherbrooke.ca/pages/sites/default/files/PHQ404_0.pdf">Thesis introducing to numerical methods</a></li>
+								<!-- Commentaires
+
+								<li><a href="#">Rutrum accumsan dolor</a></li>
+								<li><a href="#">Mattis rutrum accumsan</a></li>
+								<li><a href="#">Suspendisse varius nibh</a></li>
+								<li><a href="#">Sed et dapibus mattis</a></li>
+								-->
+							</ul>
+						</section>
+						<section class="col-3 col-6-narrower col-12-mobilep">
+							<h3>More Links to Stuff</h3>
+							<ul class="links">
+								<li><a href="https://openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c">Learn C++ with Openclassroom</a></li>
+								<li><a href="https://cel.archives-ouvertes.fr/cel-00573975/document">Thesis Scientific calculus with C++</a></li>
+								<li><a href="https://moodle.umontpellier.fr/pluginfile.php/378656/mod_resource/content/42/Modelisation_Simulation_Notes-19.pdf">Methods and limits of numerical methods with examples</a></li>
+								<!--
+								<li><a href="#">Sed et dapibus quis</a></li>
+								<li><a href="#">Rutrum amet varius</a></li>
+								-->
+							</ul>
+						</section>
+						<!--
+						<section class="col-6 col-12-narrower">
+							<h3>Get In Touch</h3>
+							<form>
+								<div class="row gtr-50">
+									<div class="col-6 col-12-mobilep">
+										<input type="text" name="name" id="name" placeholder="Name" />
+									</div>
+									<div class="col-6 col-12-mobilep">
+										<input type="email" name="email" id="email" placeholder="Email" />
+									</div>
+									<div class="col-12">
+										<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+									</div>
+									<div class="col-12">
+										<ul class="actions">
+											<li><input type="submit" class="button alt" value="Send Message" /></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+						</section>
+					-->
+					</div>
+				</div>
+
+				<!-- Icons -->
+					<ul class="icons">
+						<!--Attention à changer-->
+						<!--<li><a href="https://twitter.com/Othmanedu77" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>-->
+						<li><a href="https://github.com/othmanemouzhi/Sciences_Python_C-" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/othmane-mouzhi-906634135?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bxx3YZEi4TYSm2eFNrHMHdw%3D%3D" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<!--
+						<li><a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a></li>
+					-->
+					</ul>
+
+			</div>
+
+	</div>
+
+					
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
